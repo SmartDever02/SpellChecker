@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    outline: none;
+  }
+
+  body {
+    color: #000000aa;
+    @apply bg-white;
+  }
+
+  ::selection {
+    background: #ff000030;
+  }
+}
