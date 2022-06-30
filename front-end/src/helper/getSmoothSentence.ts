@@ -5,15 +5,16 @@ import serverData from './serverData';
 
 const makeSmoothSentence = async (
   serverType: string,
-  words: Array<any>,
-  dispatch: any
+  words: Array<string>,
+  dispatch: Function
 ) => {
   let results = await Promise.all(
     words.map(async (word) => {
       let res = await serverData(serverType, word);
       let bestOption = getBestOptions(res.suggestions, word);
+
       return {
-        best_one: bestOption.value,
+        best_one: bestOption,
         suggestions: res.suggestions,
         correct: res.correct,
       };

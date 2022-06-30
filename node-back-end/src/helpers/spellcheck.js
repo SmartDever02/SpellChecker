@@ -1,3 +1,5 @@
+const { getDictionary } = require('./getDictionary');
+
 const checkCase = (word) => {
   if (word == word.toUpperCase() || word == word.toLowerCase()) {
     return true;
@@ -15,7 +17,8 @@ const checkCase = (word) => {
 
 const spellCheck = (word) => {
   let origin = word;
-  const dictionary = require('./data.json').data;
+  const dictionary = getDictionary();
+  // console.log(getDictionary());
   let input = word; // bllllLLlln, car, caR, man
   let suggestions = [];
   let distance = [];
@@ -83,5 +86,10 @@ const spellCheck = (word) => {
     distance,
     correct,
   };
+  // return {
+  //   suggestions: [],
+  //   distance: [],
+  //   correct: true,
+  // };
 };
 module.exports = spellCheck;

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../../../app/store';
 import { SERVER_RUST } from '../../../helper/wrappedAxios';
+import { ResultObj } from '../../../slices/editboxSlice';
 
 const ResultPanel = (props: PropsType) => {
   const data = useSelector((state: RootState) => state.editbox.data);
@@ -12,26 +13,55 @@ const ResultPanel = (props: PropsType) => {
       : state.editbox.nodeResult
   );
 
-  const makeTooltip = (one: any, index: number) => {
+  const makeTooltip = (one: ResultObj, index: number) => {
     return !one.suggestions.length
       ? one.correct
         ? 'This word is correct one.'
         : "Can't find this word from the dictionary"
-      : 'Originl word is ' +
+      : 'Originl word is "' +
           data[index] +
-          ' and possible suggestion(s) is(are) ' +
-          one.suggestions.join(',');
+          '" and possible suggestion(s) is(are) ' +
+          one.suggestions.join(', ');
   };
 
   return (
     <div className='bg-white w-full lg:h-full overflow-auto break-words p-[8px_16px]'>
       {results.length > 0 && (
         <>
+          <span className='pl-2 font-bold'>Suggested Sentence:</span>
+          <br />
+        </>
+      )}
+      {results.map((one: ResultObj, index: number) => (
+        <>
+          <span
+            onDoubleClick={() => alert(makeTooltip(one, index))}
+            key={props.type + one.best_one + index + 'sentence'}
+            title={makeTooltip(one, index)}
+            className={`group relative h-fit ml-2 ${
+              !one.correct && one.suggestions.length == 0
+                ? '!bg-[#f0000083] border-solid !border-b-[#d4000090] border-b-2 cursor-pointer'
+                : ''
+            } ${
+              !one.correct && one.suggestions.length != 0
+                ? 'hover:bg-[#e4ca7450] border-dashed border-b-[#e4b37490] border-b-2 transition-all duration-200 cursor-pointer'
+                : ''
+            }
+          `}
+          >
+            {one.best_one}
+          </span>
+        </>
+      ))}
+
+      {results.length > 0 && (
+        <>
+          <br />
           <span className='pl-2 font-bold'>Suggestions:</span>
           <br />
         </>
       )}
-      {results.map((one, index) => {
+      {results.map((one: ResultObj, index: number) => {
         return (
           !one.correct && (
             <>
@@ -57,34 +87,6 @@ const ResultPanel = (props: PropsType) => {
           )
         );
       })}
-      {results.length > 0 && (
-        <>
-          <br />
-          <span className='pl-2 font-bold'>Suggested Sentence:</span>
-          <br />
-        </>
-      )}
-      {results.map((one, index) => (
-        <>
-          <span
-            onDoubleClick={() => alert(makeTooltip(one, index))}
-            key={props.type + one.best_one + index + 'sentence'}
-            title={makeTooltip(one, index)}
-            className={`group relative h-fit ml-2 ${
-              !one.correct && one.suggestions.length == 0
-                ? '!bg-[#f0000083] border-solid !border-b-[#d4000090] border-b-2 cursor-pointer'
-                : ''
-            } ${
-              !one.correct && one.suggestions.length != 0
-                ? 'hover:bg-[#e4ca7450] border-dashed border-b-[#e4b37490] border-b-2 transition-all duration-200 cursor-pointer'
-                : ''
-            }
-          `}
-          >
-            {one.best_one}
-          </span>
-        </>
-      ))}
     </div>
   );
 };
