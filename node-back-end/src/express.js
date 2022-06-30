@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const queryErrorHandler = require('querymen').errorHandler;
 const bodyErrorHandler = require('bodymen').errorHandler;
 
-module.exports = function expressApp(routes) {
+module.exports = function expressWrap(routes) {
   const app = express();
 
   app.use(cors());

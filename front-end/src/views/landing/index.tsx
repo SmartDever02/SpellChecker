@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 const Landing = () => (
   <div className='flex flex-col md:flex-row h-full bg-[url("/assets/welcome.png")] bg-cover'>
     <div className='bg-[#00000070] w-full h-full text-white select-none relative'>
-      <div className='absolute h-full w-[60vw] bg-[#000000a0] transition-all duration-200 -right-[5vw] skew-x-[-7deg]'>
-        <div className='h-full py-8 px-32 flex flex-col justify-around items-center skew-x-[7deg] -translate-x-[3vw]'>
+      <div className='absolute h-full w-[100vw] md:w-[60vw] bg-[#000000a0] transition-all duration-200 right-0 md:-right-[5vw] md:skew-x-[-7deg]'>
+        <div className='h-full py-8 px-12 md:px-32 flex flex-col justify-around items-center md:skew-x-[7deg] md:-translate-x-[3vw]'>
           <div>
             <h1 className='text-[48px] uppercase text-center mt-16 p-4'>
               WELCOME

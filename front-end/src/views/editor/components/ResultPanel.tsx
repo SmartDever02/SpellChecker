@@ -25,7 +25,7 @@ const ResultPanel = (props: PropsType) => {
 
   return (
     <div className='bg-white w-full lg:h-full overflow-auto break-words p-[8px_16px]'>
-      {data.length > 0 && (
+      {results.length > 0 && (
         <>
           <span className='pl-2 font-bold'>Suggestions:</span>
           <br />
@@ -36,7 +36,7 @@ const ResultPanel = (props: PropsType) => {
           !one.correct && (
             <>
               <span
-                key={one.best_one + index}
+                key={props.type + one.best_one + index}
                 className={`group relative h-fit mx-2 ${
                   !one.correct && one.suggestions.length == 0
                     ? '!bg-[#f0000083] border-solid !border-b-[#d4000090] border-b-2'
@@ -57,7 +57,7 @@ const ResultPanel = (props: PropsType) => {
           )
         );
       })}
-      {data.length > 0 && (
+      {results.length > 0 && (
         <>
           <br />
           <span className='pl-2 font-bold'>Suggested Sentence:</span>
@@ -68,7 +68,7 @@ const ResultPanel = (props: PropsType) => {
         <>
           <span
             onDoubleClick={() => alert(makeTooltip(one, index))}
-            key={one.best_one + index + 'sentence'}
+            key={props.type + one.best_one + index + 'sentence'}
             title={makeTooltip(one, index)}
             className={`group relative h-fit ml-2 ${
               !one.correct && one.suggestions.length == 0
