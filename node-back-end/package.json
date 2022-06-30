@@ -1,5 +1,5 @@
 {
-  "name": "@nft-minter/backend",
+  "name": "spellcheck_node_server_v1",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -11,10 +11,9 @@
     "dev": "cross-env ENVIRONMENT=development nodemon src/index.js",
     "start": "cross-env ENVIRONMENT=production node src/index.js"
   },
-  "author": "",
+  "author": "James",
   "license": "ISC",
   "dependencies": {
-    "@alch/alchemy-web3": "^1.1.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bodymen": "^1.1.1",
@@ -25,8 +24,6 @@
     "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",
     "express-ws": "^5.0.2",
-    "morgan": "^1.10.0",
-    "querymen": "^2.1.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

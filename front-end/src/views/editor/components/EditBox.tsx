@@ -36,9 +36,11 @@ const EditBox = () => {
 
     if (key === 'Enter') {
       e.preventDefault();
+
       if (sentence == '') {
         dispatch(setAllEmpty());
       }
+
       breakSentence(e.target.value);
     }
   };

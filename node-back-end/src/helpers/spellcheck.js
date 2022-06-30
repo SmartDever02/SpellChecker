@@ -12,7 +12,7 @@ const checkCase = (word) => {
   return rest == rest.toLowerCase();
 };
 
-//Dynamic Programming LCS => Longest Common Subsequence
+// Dynamic Programming LCS => Longest Common Subsequence
 // complexity O(Square(n))
 
 const spellCheck = (word) => {
