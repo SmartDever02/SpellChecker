@@ -69,6 +69,8 @@ pub fn check_case(word: String) -> bool {
 //  aple  => a-1 p-1 l-1 e-1
 //  apple => a-1 p-2 l-1 e-1
 
+// O(max(w, l[1]) + max(w, l[2]) + * * * + max(w, l[n]))
+
 pub fn get_suggestions(word: String) -> String {
    let mut file:File = File::open("data.json").unwrap();
    let mut stringdata:String = String::new();
@@ -120,6 +122,7 @@ pub fn get_suggestions(word: String) -> String {
         while j < word_obj.len() && is_vowel(word_obj[j].ch) {
             j = j + 1;
         }
+        // if we didn't reach the end of input or suggestion word
         if i < input_obj.len() || j < word_obj.len() {
             okay = false;
         }

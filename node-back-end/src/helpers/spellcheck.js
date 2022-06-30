@@ -14,6 +14,7 @@ const checkCase = (word) => {
 
 // Dynamic Programming LCS => Longest Common Subsequence
 // complexity O(Square(n))
+// O(w* l[1] + w * l[2] + * * * + w * l[n])
 
 const spellCheck = (word) => {
   let origin = word;
